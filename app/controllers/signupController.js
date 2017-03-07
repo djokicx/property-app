@@ -23,7 +23,8 @@ module.exports.signup = function(req, res) {
     username: username,
     password: password
   };
-  
+
+
   Model.User.create(newUser).then(function() {
     res.redirect('/');
   }).catch(function(error) {
