@@ -1,17 +1,14 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple Node.js app for authentication.",
   "engines": {
     "node": "6.9.5"
   },
-
   "main": "app.js",
-
   "scripts": {
     "start": "node app.js"
   },
-
   "dependencies": {
     "sequelize": "~3.30.2",
     "pg-hstore": "~2.3.2",
@@ -26,14 +23,11 @@
     "bcrypt": "~1.0.2",
     "express-handlebars": "~3.0.0"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/djokicx/pm-app"
   },
-
   "devDependencies": {},
-
   "author": "",
   "license": "ISC"
 }

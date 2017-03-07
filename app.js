@@ -15,7 +15,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'), // for cookies
     jsonParser = bodyParser.json(); // middleware that only parses json
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 5000;
 /* Environment depends on the service where you are hosting your application. The host may independenly configure the process.env.PORT variable for you (your script runs in their environment 8080 is simply a static setting*/
 // environment variable port, or 8080 if there is nothing there.
 
