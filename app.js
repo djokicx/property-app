@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({
 
 setupPassport(app);
 
-app.use('/signup', appRouter);
+app.use('/', appRouter);
 
 // start app
 app.listen(port);
