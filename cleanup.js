@@ -1,5 +1,4 @@
-
-var Model = require('../../app/model/models.js');
+var Model = require('./app/model/models.js');
 
 module.exports = function(callback) {
   // recreate User table

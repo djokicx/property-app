@@ -1,3 +1,3 @@
 var Sequelize = require('sequelize'),
-    sequelize = new Sequelize(DATABASE_URL);
+    sequelize = new Sequelize(process.env.DATABASE_URL);
 module.exports = sequelize;
