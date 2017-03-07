@@ -1,12 +1,17 @@
 {
-  "name": "auth-quickstart",
-  "version": "0.0.1",
+  "name": "app",
+  "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "app.js"
+  "engines": {
+    "node": "6.9.5"
   },
+
+  "main": "app.js",
+
+  "scripts": {
+    "start": "node app.js"
+  },
+
   "dependencies": {
     "sequelize": "~3.30.2",
     "pg-hstore": "~2.3.2",
@@ -21,7 +26,14 @@
     "bcrypt": "~1.0.2",
     "express-handlebars": "~3.0.0"
   },
-  "engines": {
-    "node": "6.9.5"
-  }
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djokicx/pm-app"
+  },
+
+  "devDependencies": {},
+
+  "author": "",
+  "license": "ISC"
 }
