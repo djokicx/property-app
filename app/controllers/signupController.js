@@ -1,5 +1,4 @@
-var bcrypt = require('bcrypt'),
-    Model = require('../model/models.js');
+var Model = require('../model/models.js');
 
 module.exports.show = function(req, res) {
   res.render('signup');
@@ -20,13 +19,9 @@ module.exports.signup = function(req, res) {
     res.redirect('signup');
   }
   
-  var salt = bcrypt.genSaltSync(10);
-  var hashedPassword = bcrypt.hashSync(password, salt);
-  
   var newUser = {
     username: username,
-    salt: salt,
-    password: hashedPassword
+    password: password
   };
   
   Model.User.create(newUser).then(function() {
