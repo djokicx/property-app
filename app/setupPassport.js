@@ -1,6 +1,5 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    bcrypt = require('bcrypt'),
     Model = require('./model/models.js');
 
 module.exports = function(app) {
@@ -18,9 +17,8 @@ module.exports = function(app) {
           return done(null, false, { message: 'Incorrect credentials.' });
         }
         
-        var hashedPassword = bcrypt.hashSync(password, user.salt);
         
-        if (user.password === hashedPassword) {
+        if (user.password === password) {
           return done(null, user);
         }
         
