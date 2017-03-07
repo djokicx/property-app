@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A simple Node.js app for authentication.",
   "engines": {
-    "node": "6.9.5"
+    "node": "6.9.5",
+    "npm": "4.4.1"
   },
   "main": "app.js",
   "scripts": {
