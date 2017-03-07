@@ -28,5 +28,6 @@
     "url": "git+https://github.com/djokicx/pm-app"
   },
   "devDependencies": {},
-  "author": ""
+  "author": "",
+  "license": "ISC"
 }
