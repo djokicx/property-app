@@ -14,8 +14,10 @@ var express = require('express'),
     // as something easy to interface with.
     cookieParser = require('cookie-parser'), // for cookies
     jsonParser = bodyParser.json(); // middleware that only parses json
+    db = require('./app/model');
 
 var port = process.env.PORT || 5000;
+
 /* Environment depends on the service where you are hosting your application. The host may independenly configure the process.env.PORT variable for you (your script runs in their environment 8080 is simply a static setting*/
 // environment variable port, or 8080 if there is nothing there.
 
@@ -48,8 +50,10 @@ setupPassport(app);
 app.use('/', appRouter);
 
 // start app
-app.listen(port);
-console.log('Server started on port ' + port);
+db.sequelize.sync().then(function() {
+    app.listen(port);
+    console.log('Server started on port ' + port);
+});
 
 /* In order to reach the app from other modules, we need to export the express application*/
 module.exports.getApp = app;
