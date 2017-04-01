@@ -1,5 +1,5 @@
 var passport = require('passport'),
-    LocalStrategyPropertyManger = require('passport-local').Strategy,
+    LocalStrategyPropertyManager = require('passport-local').Strategy,
     LocalStrategyTenant = require('passport-local').Strategy,
     Model = require('./model/models.js');
 
@@ -8,7 +8,7 @@ module.exports = function(app) {
   app.use(passport.session());
 
   // property manager local strategy login check
-  passport.use(new LocalStrategyPropertyManger(
+  passport.use(new LocalStrategyPropertyManager(
     function(username, password, done) {
       Model.PropertyManager.findOne({
         where: {
