@@ -1,6 +1,6 @@
 var passport = require('passport'),
     LocalStrategyPropertyManger = require('passport-local').Strategy,
-    LocalStrategeTenant = require('passport-local').Strategy,
+    LocalStrategyTenant = require('passport-local').Strategy,
     Model = require('./model/models.js');
 
 module.exports = function(app) {
