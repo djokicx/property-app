@@ -44,7 +44,8 @@ module.exports.signup = function(req, res) {
     username: username,
     password: password,
     firstName: firstName,
-    lastName: lastName
+    lastName: lastName,
+    email: email
   };
 
 
