@@ -1,6 +1,6 @@
 var PropertyManagerMeta = require('./PropertyManager.js'),
-	TenantMeta = require('./Tenant.js')
-    connection = require('../sequelize.js');
+	TenantMeta = require('./Tenant.js'),
+    	connection = require('../sequelize.js');
 
 // models defined with sequelize.define ('name', {attributes}, {options})
 var PropertyManager = connection.define('propertyManagers', PropertyManagerMeta.attributes, PropertyManagerMeta.options);
