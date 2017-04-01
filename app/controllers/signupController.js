@@ -11,6 +11,7 @@ module.exports.signup = function(req, res) {
   var password2 = req.body.password2;
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
+  var email = req.body.email;
 
   if (!username || !password || !password2 || !firstName || !lastName) {
     req.flash('error', "Please, fill in all the fields.");
@@ -26,6 +27,11 @@ module.exports.signup = function(req, res) {
   if (!validator.isAlpha(lastName)) {
     req.flash('error', "Last Name should only have letters.");
     req.flash('error', "Please, enter a different Last Name.");
+    res.redirect('signup');
+  }
+  
+  if (!validator.isEmail(email)) {
+    req.flash('error', "Please, enter a valid E-Mail");
     res.redirect('signup');
   }
 
