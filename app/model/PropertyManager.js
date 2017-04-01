@@ -23,7 +23,23 @@ var attributes = {
   },
   password: {
     type: Sequelize.STRING,
+  },
+  bio: {
+    type: Sequelize.TEXT,
+  },
+  phone: {
+    type: Sequelize.INTEGER,
+  },
+  properties: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  tenants: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  billingInfo: {
+    type: Sequelize.TEXT,
   }
+
 };
 
 var options = {
