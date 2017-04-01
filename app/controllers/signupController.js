@@ -18,12 +18,20 @@ module.exports.signup = function(req, res) {
   }
   
   if (!validator.isAlpha(firstName)) {
+<<<<<<< HEAD
     req.flash('error', "First Name should only have letters.");
+=======
+    req.flash('error', "Please, enter a different First Name.");
+>>>>>>> bac9f35652679ca8f001b88f60cda89018a06969
     res.redirect('signup');
   }
 
   if (!validator.isAlpha(lastName)) {
+<<<<<<< HEAD
     req.flash('error', "Last Name should only have letters.");
+=======
+    req.flash('error', "Please, enter a different Last Name.");
+>>>>>>> bac9f35652679ca8f001b88f60cda89018a06969
     res.redirect('signup');
   }
 
@@ -34,7 +42,9 @@ module.exports.signup = function(req, res) {
   
   var newPropertyManager = {
     username: username,
-    password: password
+    password: password,
+    firstName: firstName,
+    lastName: lastName
   };
 
 
