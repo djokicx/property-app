@@ -18,12 +18,12 @@ module.exports.signup = function(req, res) {
   }
   
   if (!validator.isAlpha(firstName)) {
-    req.flash('error', "Please, enter a different First Name.");
+    req.flash('error', "First Name should only have letters.");
     res.redirect('signup');
   }
 
   if (!validator.isAlpha(lastName)) {
-    req.flash('error', "Please, enter a different Last Name.");
+    req.flash('error', "Last Name should only have letters.");
     res.redirect('signup');
   }
 
