@@ -20,5 +20,15 @@ module.exports = function(callback) {
       password: 'tenant',
     }).then(callback);
   });
+
+    // recreate Property table
+  Model.Tenant.sync({ force: true }).then(function() {
+    // create username with username: tenant and 
+    // password: tenant
+    Model.Tenant.create({
+      streetName: 'Fulton',
+      streetNumber: '2140',
+    }).then(callback);
+  });
 };
 
