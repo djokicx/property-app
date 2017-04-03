@@ -1,7 +1,7 @@
 var Model = require('../model/models.js'),
 	validator = require('validator'),
-	addressValidator = require('address-validator'),// TODO: Install dependency
-	_= require('underscore');// TODO: Install dependency
+	addressValidator = require('address-validator'),
+	_= require('underscore');
     Address = addressValidator.Address;
 
 module.exports.show = function(req, res) {

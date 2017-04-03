@@ -63,7 +63,7 @@ var attributes = {
   grossOperatingIncome: {
     type: Sequelize.INTEGER,
   },
-  opeartingExprenses: {
+  operatingExpenses: {
     type: Sequelize.INTEGER,
   },
   netOperatingIncome: {
