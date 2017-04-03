@@ -1,6 +1,5 @@
 var Sequelize = require('sequelize');
 
-
 /*
 Owner (Property Manager)
 
