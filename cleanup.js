@@ -2,7 +2,7 @@ var Model = require('./app/model/models.js');
 
 module.exports = function(callback) {
   // recreate PropertyManager table
-  Model.PropetyManager.sync({ force: true }).then(function() {
+  Model.PropertyManager.sync({ force: true }).then(function() {
     // create username with username: propertyManager and 
     // password: propertyManager
     Model.PropertyManager.create({
