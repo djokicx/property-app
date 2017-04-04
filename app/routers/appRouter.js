@@ -31,7 +31,7 @@ module.exports = function(express) {
   });
 
   router.get('/properties', isAuthenticated, propertyMakeController.show);
-  router.post('/properties', isAuthenticated, propertyMakeController.create);
+  router.post('/properties', isAuthenticated, propertyMakeController.createProperty);
 
   router.get('/logout', function(req, res) {
     req.logout();
