@@ -9,7 +9,6 @@ module.exports.show = function(req, res) {
 };
 
 module.exports.create = function(req, res) {
-	var streetNumber = req.body.streetNumber;
 	var street = req.body.street;
 	var zipcode = req.body.zipcode;
 	var city = req.body.city;
@@ -41,7 +40,7 @@ module.exports.create = function(req, res) {
 	}
 
 	var testAddress = new Address({
-		street: streetNumber + ' ' + street,
+		street: street,
 		city: city,
 		state: state,
 		country: country
@@ -51,20 +50,18 @@ module.exports.create = function(req, res) {
     console.log("before validating address");
 // addressValidator.match.streetAddress` -> tells the validator that you think the input should be a street address. This data makes the validator more accurate.  
 	addressValidator.validate(testAddress, addressValidator.match.streetAddress, function(err, exact, inexact) {
-        var first = exact[0];
-        console.log("first.street"); console.log(first.street);
-        console.log("first.location.lat"); console.log(first.location.lat);
-        // for (var i = 0; i <= exact.length; i++) {
-			// console.log(exact[i]);
-        // }
-
         newAddress = {
-            streetNumber: exact.streetNumber,
-            streetName: exact.street,
-            city: exact.city,
-            state: exact.state,
-            country: exact.country,
-            zipcode: exact.postalCode
+            street: first.streetNumber + " " + first.street,
+            city: first.city,
+            state: first.state,
+            country: first.countryAbbr,
+            zipcode: first.postalCode,
+            latitude: first.location.lat,
+            longitude: first.location.lon,
+			bedrooms: bedrooms,
+	 		bathrooms: bathrooms,
+	 		parking: parking,
+		 	squareFootage: squareFootage
         };
 	});
 

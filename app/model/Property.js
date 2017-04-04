@@ -21,10 +21,7 @@ var attributes = {
       is: /^[a-z0-9\_\-]+$/i,
     }
   },
-  streetName: {
-    type: Sequelize.STRING,
-  },
-  streetNumber: {
+  street: {
     type: Sequelize.STRING,
   },
   zipcode: {
