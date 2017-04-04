@@ -16,7 +16,7 @@ module.exports = function(express) {
   router.get('/signup', signupController.show);
   router.post('/signup', signupController.signup);
 
-  router.post('/login', passport.authenticate('local', {
+  router.post('/login', passport.authenticate('propertyManager', {
       successRedirect: '/dashboard',
       failureRedirect: '/',
       failureFlash: true

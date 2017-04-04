@@ -8,7 +8,7 @@ module.exports = function(app) {
   app.use(passport.session());
 
   // property manager local strategy login check
-  passport.use(new LocalStrategyPropertyManager(
+  passport.use('propertyManager', new LocalStrategyPropertyManager(
     function(username, password, done) {
       Model.PropertyManager.findOne({
         where: {
