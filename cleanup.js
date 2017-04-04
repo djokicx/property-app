@@ -26,8 +26,9 @@ module.exports = function(callback) {
     // create username with username: tenant and 
     // password: tenant
     Model.Property.create({
-      streetName: 'Fulton',
-      streetNumber: '2140',
+      street: '2140 Fulton Street',
+      city: 'San Francisco',
+      state: 'California',
     }).then(callback);
   });
 };
