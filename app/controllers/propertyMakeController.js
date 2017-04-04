@@ -51,10 +51,10 @@ module.exports.create = function(req, res) {
     console.log("before validating address");
 // addressValidator.match.streetAddress` -> tells the validator that you think the input should be a street address. This data makes the validator more accurate.  
 	addressValidator.validate(testAddress, addressValidator.match.streetAddress, function(err, exact, inexact) {
-        console.log(exact[0]);
-        console.log(exact.postalCode);
+        console.log(exact);
+        console.log(inexact);
         for (var i = 0; i <= exact.length; i++) {
-			console.log(exact[i]);
+			// console.log(exact[i]);
         }
 
         newAddress = {
