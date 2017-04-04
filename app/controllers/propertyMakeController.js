@@ -66,8 +66,11 @@ module.exports.create = function(req, res) {
             squareFootage: squareFootage
             // owner: Model.PropertyManager.username;  // figure this out.
         };
+        console.log("after setting new address");
+        console.log(newAddress);
 	});
 
+	console.log("after address validation");
 	console.log(newAddress);
     Model.Property.create(newAddress).then(function() {
         console.log("Adding to property table...");
