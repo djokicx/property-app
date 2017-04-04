@@ -50,7 +50,7 @@ module.exports.create = function(req, res) {
 // addressValidator.match.streetAddress` -> tells the validator that you think the input should be a street address. This data makes the validator more accurate.  
 	addressValidator.validate(testAddress, addressValidator.match.streetAddress, function(err, exact, inexact) {
         var first = exact[0];
-        
+
         newAddress = {
             street: first.streetNumber + " " + first.street,
             city: first.city,
@@ -62,7 +62,8 @@ module.exports.create = function(req, res) {
 			bedrooms: bedrooms,
 	 		bathrooms: bathrooms,
 	 		parking: parking,
-		 	squareFootage: squareFootage
+		 	squareFootage: squareFootage,
+		 	// owner: Model.PropertyManager.username;  // figure this out.
         };
 	});
 

@@ -16,10 +16,7 @@ Financial {Property Purchase Price; Gross Operating Income (Revenue); Operating 
 var attributes = {
   owner: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      is: /^[a-z0-9\_\-]+$/i,
-    }
+    allowNull: true
   },
   street: {
     type: Sequelize.STRING,
