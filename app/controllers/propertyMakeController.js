@@ -75,25 +75,22 @@ module.exports.createProperty = function(req, res) {
             squareFootage: squareFootage
             // owner: Model.PropertyManager.username;  // figure this out.
         };
-        // console.log("new address:");
-        // console.log(newAddress);
 
-     //    Model.Property.create(newAddress).then(function() {
-     //    	console.log("Adding to property table...");
-     //    	res.redirect('/dashboard');
-    	// }).catch(function(error) {
-     //    	req.flash('error', "fuck up in adding to property table");
-     //    	res.redirect('/properties');
-    	// });
+        Model.Property.create(newAddress).then(function() {
+        	res.redirect('/dashboard');
+    	}).catch(function(error) {
+        	req.flash('error', "fuck up in adding to property table");
+        	res.redirect('/properties');
+    	});
 	});
 
 	// console.log("after address validation");
 	// console.log(newAddress);
-    Model.Property.create(newAddress).then(function() {
-        console.log("Adding to property table...");
-        res.redirect('/properties');
-    }).catch(function(error) {
-        req.flash('error', "Please, enter a valid address.");
-        res.redirect('/properties');
-    });
+ //    Model.Property.create(newAddress).then(function() {
+ //        console.log("Adding to property table...");
+ //        res.redirect('/dashboard');
+ //    }).catch(function(error) {
+ //        req.flash('error', "Please, enter a valid address.");
+ //        res.redirect('/properties');
+ //    });
 };
