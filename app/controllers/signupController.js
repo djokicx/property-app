@@ -42,7 +42,7 @@ module.exports.signup = function(req, res) {
   }
   
   var salt = bcrypt.genSaltSync(10);
-  var hashedPassword = bcrypt.hashSync(password, salt);
+  var hashedPassword = bcrypt.hashSync(password, salt); // actual hashing
 
   // For safety reasons, user's password itself is not stored
   var newPropertyManager = {
@@ -50,7 +50,8 @@ module.exports.signup = function(req, res) {
     password: hashedPassword,
     firstName: firstName,
     lastName: lastName,
-    email: email
+    email: email,
+    salt: salt
   };
 
 
