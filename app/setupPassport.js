@@ -1,7 +1,8 @@
 var passport = require('passport'),
     LocalStrategyPropertyManager = require('passport-local').Strategy,
     LocalStrategyTenant = require('passport-local').Strategy,
-    Model = require('./model/models.js');
+    Model = require('./model/models.js'),
+    bcrypt = require('bcrypt-nodejs');
 
 module.exports = function(app) {
   app.use(passport.initialize());
@@ -19,8 +20,9 @@ module.exports = function(app) {
           return done(null, false, { message: 'Incorrect credentials.' });
         }
         
+        var hashedPassword = bcrypt.hashSync(password, propertyManager.salt);
         
-        if (propertyManager.password === password) {
+        if (propertyManager.password === hashedPassword) {
           return done(null, propertyManager);
         }
         
@@ -41,8 +43,9 @@ module.exports = function(app) {
           return done(null, false, { message: 'Incorrect credentials.' });
         }
         
+        var hashedPassword = bcrypt.hashSync(password, tenant.salt);
         
-        if (tenant.password === password) {
+        if (tenant.password === hashedPassword) {
           return done(null, tenant);
         }
         

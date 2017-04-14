@@ -3,7 +3,7 @@
 {{/section}}
 
 <div class="container">
-  <form method="POST" action="/signup" class="form-signin">
+  <form method="POST" action="/invite" class="form-signin">
     <h2 class="form-signin-heading">Invite your Tenant</h2>
     
     {{#if errorMessage}}
@@ -15,6 +15,6 @@
     <label for="inputEmail" class="sr-only">E-Mail</label>
     <input type="text" id="inputEmail" name="email" class="form-control" placeholder="E-Mail" required autofocus>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Send and E-mail</button>
   </form>
 </div>

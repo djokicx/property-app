@@ -9,6 +9,7 @@ module.exports.show = function(req, res) {
 module.exports.invite = function(req, res) {
   var email = req.body.email;
 
+  console.log(req.user.username);
   if (!validator.isEmail(email)) {
     req.flash('error', "Please, enter a valid E-Mail");
     res.redirect('invite');
@@ -29,7 +30,7 @@ module.exports.invite = function(req, res) {
       to: email, // list of receivers
       subject: 'Patty: Your Landlord Invited You.', // Subject line
       text: 'Welcome to Patty, little one', // plain text body
-      html: '<b>Hello world ?</b>' // 
+      html: '<b>You have been invited by your landlord to join Paddy. Please sign up with the following link:</b>                <a href="#">Join Here</a>' // add an appropriate link
   };
 
   // send mail with defined transport object

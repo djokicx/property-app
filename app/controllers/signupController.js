@@ -1,5 +1,6 @@
-var Model = require('../model/models.js');
-var validator = require('validator');
+var Model = require('../model/models.js'),
+    validator = require('validator'),
+     bcrypt = require('bcrypt-nodejs');
 
 module.exports.show = function(req, res) {
   res.render('signup');
@@ -40,9 +41,13 @@ module.exports.signup = function(req, res) {
     res.redirect('signup');
   }
   
+  var salt = bcrypt.genSaltSync(10);
+  var hashedPassword = bcrypt.hashSync(password, salt);
+
+  // For safety reasons, user's password itself is not stored
   var newPropertyManager = {
     username: username,
-    password: password,
+    password: hashedPassword,
     firstName: firstName,
     lastName: lastName,
     email: email
