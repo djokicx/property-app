@@ -27,6 +27,12 @@ var attributes = {
   salt: {
     type: Sequelize.STRING,
   },
+  resetPasswordToken: {
+    type: Sequelize.STRING,
+  },
+  resetPasswordExpires: {
+    type: Sequelize.STRING,
+  },
   bio: {
     type: Sequelize.TEXT,
   },
