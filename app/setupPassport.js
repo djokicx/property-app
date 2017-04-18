@@ -16,6 +16,7 @@ module.exports = function(app) {
           'username': username
         }
       }).then(function (propertyManager) {
+        console.log(propertyManager);
         if (propertyManager === null) {
           return done(null, false, { message: 'Incorrect credentials.' });
         }

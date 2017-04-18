@@ -1,7 +1,8 @@
 var passport = require('passport'),
     signupController = require('../controllers/signupController.js'),
     propertyMakeController = require('../controllers/propertyMakeController.js'),
-    inviteTenantController = require('../controllers/inviteTenantController.js');
+    inviteTenantController = require('../controllers/inviteTenantController.js'),
+    forgotPasswordController = require('../controllers/forgotPasswordController.js');
 
 
 module.exports = function(express) {
@@ -27,6 +28,14 @@ module.exports = function(express) {
   router.get('/', function(req, res) {
     res.render('home');
   });
+
+  router.get('/forgot', function(req, res) {
+    res.render('forgot', {
+      user: req.user
+    });
+  });
+
+  router.post('/forgot', forgotPasswordController.forgot);
 
   router.get('/dashboard', isAuthenticated, function(req, res) {
     res.render('dashboard');

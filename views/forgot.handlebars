@@ -1,0 +1,20 @@
+s{{#section 'head'}}
+    <link rel="stylesheet" href="/styles/auth.css">
+{{/section}}
+
+<div class="container">
+  <form method="POST" action="/forgot" class="form-signin">
+    <h2 class="form-signin-heading">Reset Password</h2>
+    
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
+
+    <label for="inputEmail" class="sr-only">E-Mail</label>
+    <input type="text" id="inputEmail" name="email" class="form-control" placeholder="E-Mail" required autofocus>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>
+  </form>
+</div>
