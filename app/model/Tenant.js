@@ -1,4 +1,6 @@
-var Sequelize = require('sequelize');
+var Sequelize = require('sequelize'),
+    Model = require('../model/models.js');
+
 
 var attributes = {
   username: {
@@ -31,7 +33,7 @@ var attributes = {
     type: Sequelize.STRING,
   },
   resetPasswordExpires: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE,
   },
   bio: {
     type: Sequelize.TEXT,
@@ -47,8 +49,22 @@ var attributes = {
   },
   billingInfo: {
     type: Sequelize.TEXT,
-  }
-  
+  },
+  property: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+
+    references: {
+   // This is a reference to another model
+    model: Model.Property,
+
+   // This is the column name of the referenced model
+    key: 'id',
+
+   // This declares when to check the foreign key constraint. PostgreSQL only.
+    deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+    }
+ }
 };
 
 var options = {

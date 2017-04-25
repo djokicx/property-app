@@ -31,6 +31,7 @@ module.exports.invite = function(req, res) {
       subject: 'Patty: Your Landlord Invited You.', // Subject line
       text: 'Welcome to Patty, little one', // plain text body
       html: '<b>You have been invited by your landlord to join Paddy. Please sign up with the following link:</b>                <a href="https://pm-usf.herokuapp.com/tenantSignup">Join Here</a>' // add an appropriate link
+      html: '<b>You have been invited by your landlord to join Paddy. Please sign up with the following link:</b> <a href="#">Join Here</a>' // add an appropriate link
   };
 
   // send mail with defined transport object

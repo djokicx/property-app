@@ -9,6 +9,7 @@ module.exports.show = function(req, res) {
 };
 
 module.exports.createProperty = function(req, res) {
+
 	var street = req.body.street;
 	var zipcode = req.body.zipcode;
 	var city = req.body.city;
@@ -56,12 +57,13 @@ module.exports.createProperty = function(req, res) {
 // addressValidator.match.streetAddress` -> tells the validator that you think the input should be a street address. This data makes the validator more accurate.  
 	addressValidator.validate(testAddress, addressValidator.match.streetAddress, function(err, exact, inexact) {
         first = exact[0];
-        if (first == null) {
-        	req.flash('error', "Please enter a valid address.");
-        	res.redirect('properties');
+        if (first === null) {
+			req.flash('error', "Please enter a valid address.");
+			res.redirect('properties');
         }
 
         newAddress = {
+			owner: req.user.username,
             street: first.streetNumber + " " + first.street,
             city: first.city,
             state: first.state,
@@ -73,15 +75,16 @@ module.exports.createProperty = function(req, res) {
             bathrooms: bathrooms,
             parking: parking,
             squareFootage: squareFootage
+
             // owner: Model.PropertyManager.username;  // figure this out.
         };
 
         Model.Property.create(newAddress).then(function() {
-        	res.redirect('/dashboard');
-    	}).catch(function(error) {
-        	req.flash('error', "fuck up in adding to property table");
-        	res.redirect('/properties');
-    	});
+			res.redirect('/dashboard');
+		}).catch(function(error) {
+			req.flash('error', "Please enter the information again.");
+			res.redirect('/properties');
+		});
 	});
 
 	// console.log("after address validation");
