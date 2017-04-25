@@ -40,7 +40,7 @@ module.exports = function(express) {
   router.post('/invite', isAuthenticated, inviteTenantController.invite);
 
   router.get('/payment', isAuthenticated, paymentController.show);
-  router.post('/payment', isAuthenticated, paymentController.pay)
+  router.post('/payment', isAuthenticated, paymentController.pay);
 
   router.get('/logout', function(req, res) {
     req.logout();
