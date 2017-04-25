@@ -31,7 +31,7 @@ var attributes = {
     type: Sequelize.STRING,
   },
   resetPasswordExpires: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE,
   },
   bio: {
     type: Sequelize.TEXT,
@@ -40,9 +40,6 @@ var attributes = {
     type: Sequelize.INTEGER,
   },
   properties: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
-  },
-  tenants: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
   },
   billingInfo: {

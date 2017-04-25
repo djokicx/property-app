@@ -1,4 +1,5 @@
-var Sequelize = require('sequelize');
+var Sequelize = require('sequelize'),
+    Model = require('../model/models.js');
 
 /*
 Owner (Property Manager)
@@ -14,9 +15,25 @@ Bedroom {Square Footage; Amount per Month; Amount due Overall; Amount due per Mo
 Financial {Property Purchase Price; Gross Operating Income (Revenue); Operating Expenses {Property Tax; Insurance; Maintenance Expense}, Net Operating Income; ROI;}
 */
 var attributes = {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    unique:true,
+    primaryKey: true,
+  },
   owner: {
     type: Sequelize.STRING,
-    allowNull: true
+
+    references: {
+   // This is a reference to another model
+    model: Model.PropertyManager,
+
+   // This is the column name of the referenced model
+    key: 'username',
+
+   // This declares when to check the foreign key constraint. PostgreSQL only.
+    deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+    }
   },
   street: {
     type: Sequelize.STRING,
@@ -34,10 +51,10 @@ var attributes = {
     type: Sequelize.STRING,
   },
   latitude: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DOUBLE,
   },
   longitude: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DOUBLE,
   },
   bedrooms: {
     type: Sequelize.INTEGER,
