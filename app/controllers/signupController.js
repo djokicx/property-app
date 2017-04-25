@@ -1,6 +1,6 @@
 var Model = require('../model/models.js'),
     validator = require('validator'),
-     bcrypt = require('bcrypt-nodejs');
+    bcrypt = require('bcrypt-nodejs');
 
 module.exports.show = function(req, res) {
   res.render('signup');
@@ -13,6 +13,7 @@ module.exports.signup = function(req, res) {
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
   var email = req.body.email;
+  var userType = req.body.userType;
 
   if (!username || !password || !password2 || !firstName || !lastName) {
     req.flash('error', "Please, fill in all the fields.");
@@ -45,7 +46,7 @@ module.exports.signup = function(req, res) {
   var hashedPassword = bcrypt.hashSync(password, salt); // actual hashing
 
   // For safety reasons, user's password itself is not stored
-  var newPropertyManager = {
+  var user = {
     username: username,
     password: hashedPassword,
     firstName: firstName,
@@ -54,11 +55,19 @@ module.exports.signup = function(req, res) {
     salt: salt
   };
 
-
-  Model.PropertyManager.create(newPropertyManager).then(function() {
-    res.redirect('/');
-  }).catch(function(error) {
-    req.flash('error', "Please, choose a different username.");
-    res.redirect('/signup');
-  });
+  if (userType == "propertyManager") {
+    Model.PropertyManager.create(user).then(function() {
+      res.redirect('/');
+    }).catch(function(error) {
+      req.flash('error', "Please, choose a different username.");
+      res.redirect('/dashboard');
+    });
+  } else if (userType == "tenant") {
+    Model.Tenant.create(user).then(function() {
+      res.redirect('/');
+    }).catch(function(error) {
+      req.flash('error', "Please, choose a different username.");
+      res.redirect('/tenantDashboard');
+    });
+  }
 };
