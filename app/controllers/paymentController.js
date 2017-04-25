@@ -1,5 +1,6 @@
-const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
-const keySecret = process.env.STRIPE_SECRET_KEY;
+//const keyPublishable = process.env.STRIPE_PUBLISHABLE_KEY;
+//const keySecret = process.env.STRIPE_SECRET_KEY;
+const keySecret = "pk_test_6pRNASCoBOKtIshFeQd4XMUh"
 const Stripe = require("stripe")(keySecret);
 
 module.exports.show = function(req, res) {
