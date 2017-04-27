@@ -33,7 +33,7 @@ module.exports = function(app) {
   ));
 
   // tenant local strategy login check
-  passport.use(new LocalStrategyTenant(
+  passport.use('tenant', new LocalStrategyTenant(
     function(username, password, done) {
       Model.Tenant.findOne({
         where: {

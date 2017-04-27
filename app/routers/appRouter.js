@@ -1,34 +1,72 @@
 var passport = require('passport'),
-    signupController = require('../controllers/signupController.js'),
-    propertyMakeController = require('../controllers/propertyMakeController.js'),
-    inviteTenantController = require('../controllers/inviteTenantController.js'),
     forgotPasswordController = require('../controllers/forgotPasswordController.js'),
+    inviteTenantController = require('../controllers/inviteTenantController.js'),
+    paymentController = require('../controllers/paymentController.js'),
+    propertyMakeController = require('../controllers/propertyMakeController.js'),
     resetController = require('../controllers/resetController.js'),
-    paymentController = require('../controllers/paymentController.js');
+    signupController = require('../controllers/signupController.js');
 
 module.exports = function(express) {
   var router = express.Router();
 
   var isAuthenticated = function (req, res, next) {
+    console.log("inside isAuthenticated");
     if (req.isAuthenticated()) {
       return next();
     }
     req.flash('error', 'You have to be logged in to access the page.');
     res.redirect('/');
   };
+
+  // var isPropertyManager = function (req, res, next) {
+  //   passport.authenticate('propertyManager'), function(req, res, next) {
+  //     return next;
+  //   }
+  //   req.flash('error', 'You have to be logged in and/or a tenant to access the page.');
+  //   res.redirect('/');
+  // }
+
+  // var isTenant = function (req, res, next) {
+  //   passport.authenticate('tenant'), function(req, res, next) {
+  //     return next;
+  //   }
+  //   req.flash('error', 'You have to be logged in and/or a property manager to access the page.');
+  //   res.redirect('/');
+  // }
   
   router.get('/signup', signupController.show);
   router.post('/signup', signupController.signup);
+
+  router.get('/', function(req, res) {
+    res.render('home');
+  });
+
+  // var signIn = function (req, res) {
+  //   console.log(req.body.userType);
+  //   if (req.body.userType == "propertyManager") {
+  //     console.log("inside if statement");
+  //     passport.authenticate('propertyManager', {
+  //       successRedirect: '/dashboard',
+  //       failureRedirect: '/',
+  //       failureFlash: true
+  //     })
+  //   } else if (req.body.userType == "tenant") {
+  //     passport.authenticate('tenant', {
+  //       successRedirect: '/tenantDashboard',
+  //       failureRedirect: '/',
+  //       failureFlash: true
+  //     })
+  //   }
+  //   console.log("outside else if");
+  // };
+
+  // router.post('/login', signIn);
 
   router.post('/login', passport.authenticate('propertyManager', {
       successRedirect: '/dashboard',
       failureRedirect: '/',
       failureFlash: true
   }));
-
-  router.get('/', function(req, res) {
-    res.render('home');
-  });
 
   router.get('/forgot', function(req, res) {
     res.render('forgot', {
@@ -43,6 +81,9 @@ module.exports = function(express) {
 
   router.get('/dashboard', isAuthenticated, function(req, res) {
     res.render('dashboard');
+  });
+  router.get('/tenantDashboard', isAuthenticated, function(req, res) {
+    res.render('tenantDashboard');
   });
 
   router.get('/properties', isAuthenticated, propertyMakeController.show);
