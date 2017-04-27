@@ -2,6 +2,8 @@ var passport = require('passport'),
     LocalStrategyPropertyManager = require('passport-local').Strategy,
     LocalStrategyTenant = require('passport-local').Strategy,
     Model = require('./model/models.js'),
+    PropertyManager = Model.PropertyManager,
+    Tenant = Model.Tenant,
     bcrypt = require('bcrypt-nodejs');
 
 module.exports = function(app) {
@@ -55,43 +57,69 @@ module.exports = function(app) {
     }
   ));
 
-  // property manager serialize
-  passport.serializeUser(function(propertyManager, done) {
-    done(null, propertyManager.id);
+  // serialize and deserialize for both
+  passport.serializeUser(function(user, done) {
+    var key = {
+      id: user.id,
+      type: user.userType
+    }
+    done(null, key)
   });
-  // property manager deserialize
-  passport.deserializeUser(function(id, done) {
-    Model.PropertyManager.findOne({
+  
+  passport.deserializeUser(function(key, done) {
+    var userModel = key.type === 'propertyManager' ? PropertyManager : Tenant;
+    userModel.findOne({
       where: {
         'id': id
       }
-    }).then(function (propertyManager) {
-      if (propertyManager === null) {
+    }).then(function (user) {
+      if (user === null) {
         done(new Error('Wrong user id.'));
       }
       
-      done(null, propertyManager);
+      done(null, user);
     });
   });
 
 
-  // tenant serialize
-  passport.serializeUser(function(tenant, done) {
-    done(null, tenant.id);
-  });
-  // tenant deserialize
-  passport.deserializeUser(function(id, done) {
-    Model.Tenant.findOne({
-      where: {
-        'id': id
-      }
-    }).then(function (tenant) {
-      if (tenant === null) {
-        done(new Error('Wrong user id.'));
-      }
+
+  // // property manager serialize
+  // passport.serializeUser(function(propertyManager, done) {
+  //   done(null, propertyManager.id);
+  // });
+  // // property manager deserialize
+  // passport.deserializeUser(function(id, done) {
+  //   Model.PropertyManager.findOne({
+  //     where: {
+  //       'id': id
+  //     }
+  //   }).then(function (propertyManager) {
+  //     if (propertyManager === null) {
+  //       done(new Error('Wrong user id.'));
+  //     }
       
-      done(null, tenant);
-    });
-  });
+  //     done(null, propertyManager);
+  //   });
+  // });
+
+
+  // // tenant serialize
+  // passport.serializeUser(function(tenant, done) {
+  //   done(null, tenant.id);
+  // });
+  // // tenant deserialize
+  // passport.deserializeUser(function(id, done) {
+  //   Model.Tenant.findOne({
+  //     where: {
+  //       'id': id
+  //     }
+  //   }).then(function (tenant) {
+  //     if (tenant === null) {
+  //       done(new Error('Wrong user id.'));
+  //     }
+      
+  //     done(null, tenant);
+  //   });
+  // });
 
 };

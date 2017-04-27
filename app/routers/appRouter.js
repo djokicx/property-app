@@ -49,13 +49,13 @@ module.exports = function(express) {
   //       successRedirect: '/dashboard',
   //       failureRedirect: '/',
   //       failureFlash: true
-  //     })
+  //     });
   //   } else if (req.body.userType == "tenant") {
   //     passport.authenticate('tenant', {
   //       successRedirect: '/tenantDashboard',
   //       failureRedirect: '/',
   //       failureFlash: true
-  //     })
+  //     });
   //   }
   //   console.log("outside else if");
   // };

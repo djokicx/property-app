@@ -44,8 +44,10 @@ var attributes = {
   },
   billingInfo: {
     type: Sequelize.TEXT,
+  },
+  userType: {
+    type: Sequelize.STRING
   }
-
 };
 
 var options = {

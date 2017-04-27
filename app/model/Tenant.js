@@ -1,7 +1,6 @@
 var Sequelize = require('sequelize'),
     Model = require('../model/models.js');
 
-
 var attributes = {
   username: {
     type: Sequelize.STRING,
@@ -64,7 +63,10 @@ var attributes = {
    // This declares when to check the foreign key constraint. PostgreSQL only.
     deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
- }
+  },
+  userType: {
+    type: Sequelize.STRING
+  }
 };
 
 var options = {
