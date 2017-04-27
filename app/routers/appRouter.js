@@ -51,8 +51,9 @@ module.exports = function(express) {
   router.get('/invite', isAuthenticated, inviteTenantController.show);
   router.post('/invite', isAuthenticated, inviteTenantController.invite);
     
-  router.get('/payment', isAuthenticated, paymentController.show);
-  router.post('/payment', isAuthenticated, paymentController.pay);
+  // need new payment medium. not using stripe anymore
+  // router.get('/payment', isAuthenticated, paymentController.show);
+  // router.post('/payment', isAuthenticated, paymentController.pay);
 
   router.get('/logout', function(req, res) {
     req.logout();
