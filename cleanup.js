@@ -11,6 +11,16 @@ module.exports = function(callback) {
     }).then(callback);
   });
 
+    // recreate Property table
+  Model.Property.sync({ force: true }).then(function() {
+    // create dummy property
+    Model.Property.create({
+      street: '2140 Fulton Street',
+      city: 'San Francisco',
+      state: 'California',
+    }).then(callback);
+  });
+
   // recreate Tenant table
   Model.Tenant.sync({ force: true }).then(function() {
     // create username with username: tenant and 
@@ -18,17 +28,6 @@ module.exports = function(callback) {
     Model.Tenant.create({
       username: 'tenant',
       password: 'tenant',
-    }).then(callback);
-  });
-
-    // recreate Property table
-  Model.Property.sync({ force: true }).then(function() {
-    // create username with username: tenant and 
-    // password: tenant
-    Model.Property.create({
-      street: '2140 Fulton Street',
-      city: 'San Francisco',
-      state: 'California',
     }).then(callback);
   });
 };

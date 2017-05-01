@@ -18,7 +18,7 @@ module.exports = function(app) {
           'username': username
         }
       }).then(function (propertyManager) {
-        console.log(propertyManager);
+        console.log("pm: " + propertyManager);
         if (propertyManager === null) {
           return done(null, false, { message: 'Incorrect credentials.' });
         }
@@ -59,6 +59,7 @@ module.exports = function(app) {
 
   // serialize and deserialize for both
   passport.serializeUser(function(user, done) {
+    console.log("inside serialize, user: " + user);
     var key = {
       id: user.id,
       type: user.userType
@@ -70,7 +71,7 @@ module.exports = function(app) {
     var userModel = key.type === 'propertyManager' ? PropertyManager : Tenant;
     userModel.findOne({
       where: {
-        'id': id
+        id: key.id
       }
     }).then(function (user) {
       if (user === null) {

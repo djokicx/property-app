@@ -52,22 +52,23 @@ module.exports.signup = function(req, res) {
     firstName: firstName,
     lastName: lastName,
     email: email,
-    salt: salt
+    salt: salt,
+    userType: userType
   };
 
   if (userType == "propertyManager") {
     Model.PropertyManager.create(user).then(function() {
-      res.redirect('/');
+      res.redirect('/dashboard');
     }).catch(function(error) {
       req.flash('error', "Please, choose a different username.");
-      res.redirect('/dashboard');
+      res.redirect('/');
     });
   } else if (userType == "tenant") {
     Model.Tenant.create(user).then(function() {
-      res.redirect('/');
+      res.redirect('/tenantDashboard');
     }).catch(function(error) {
       req.flash('error', "Please, choose a different username.");
-      res.redirect('/tenantDashboard');
+      res.redirect('/');
     });
   }
 };

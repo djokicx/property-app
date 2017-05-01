@@ -18,19 +18,19 @@ module.exports = function(express) {
     res.redirect('/');
   };
 
-  // var isPropertyManager = function (req, res, next) {
-  //   passport.authenticate('propertyManager'), function(req, res, next) {
-  //     return next;
-  //   }
-  //   req.flash('error', 'You have to be logged in and/or a tenant to access the page.');
-  //   res.redirect('/');
-  // }
+  var isPropertyManager = function (req, res, next) {
+    passport.authenticate('propertyManager'), function(req, res, next) {
+      return next;
+    }
+    req.flash('error', 'You have to be logged in and/or a property manager to access the page.');
+    res.redirect('/');
+  }
 
   // var isTenant = function (req, res, next) {
   //   passport.authenticate('tenant'), function(req, res, next) {
   //     return next;
   //   }
-  //   req.flash('error', 'You have to be logged in and/or a property manager to access the page.');
+  //   req.flash('error', 'You have to be logged in and/or a tenant to access the page.');
   //   res.redirect('/');
   // }
   
@@ -60,13 +60,36 @@ module.exports = function(express) {
   //   console.log("outside else if");
   // };
 
+  // var signIn = function(req, res) {
+  //   passport.authenticate(['propertyManager', 'tenant']),
+  //     function(req, res) {
+
+  //     }
+  // }
+
   // router.post('/login', signIn);
 
-  router.post('/login', passport.authenticate('propertyManager', {
-      successRedirect: '/dashboard',
-      failureRedirect: '/',
-      failureFlash: true
-  }));
+  // router.post('/login', passport.authenticate('propertyManager', {
+  //     successRedirect: '/dashboard',
+  //     failureRedirect: '/',
+  //     failureFlash: true
+  // }));
+
+  router.post('/login',
+    passport.authenticate(['propertyManager', 'tenant']),
+      function(req, res) {
+        if (req.body.userType == "propertyManager") {
+          console.log("pm");
+          res.redirect('/dashboard');
+        } else if (req.body.userType == "tenant") {
+          console.log("tenant");
+          res.redirect('tenantDashboard');
+        }
+        else {
+          req.flash('error', 'You have to be logged in to access the page.');
+          res.redirect('/');
+        }
+  });
 
   router.get('/forgot', function(req, res) {
     res.render('forgot', {
@@ -82,6 +105,13 @@ module.exports = function(express) {
   router.get('/dashboard', isAuthenticated, function(req, res) {
     res.render('dashboard');
   });
+
+  // router.get('/dashboard', passport.authenticate('propertyManager', {
+  //     successRedirect: '/dashboard',
+  //     failureRedirect: '/',
+  //     failureFlash: true
+  // }));
+
   router.get('/tenantDashboard', isAuthenticated, function(req, res) {
     res.render('tenantDashboard');
   });
