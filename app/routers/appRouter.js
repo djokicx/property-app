@@ -48,10 +48,8 @@ module.exports = function(express) {
         } else if (req.user.userType == "tenant") {
           res.redirect('tenantDashboard');
         }
-        else {
-          req.flash('error', 'You have to be logged in to access the page.');
-          res.redirect('/');
-        }
+        req.flash('error', 'You have to be logged in to access the page.');
+        res.redirect('/');
   });
 
   router.get('/forgot', function(req, res) {
@@ -73,6 +71,18 @@ module.exports = function(express) {
     res.render('tenantDashboard');
   });
 
+  router.get('/paymentHistory', isAuthenticated, function(req, res) {
+    console.log("rendering /paymentHistory");
+    res.render('/paymentHistory');
+  });
+
+  router.get('/request', isAuthenticated, function(req, res) {
+    res.render('request');
+  });
+  router.post('/request', isAuthenticated, function(req, res) {
+    res.redirect('/tenantDashboard');
+  });
+
   router.get('/properties', isAuthenticated, propertyMakeController.show);
   router.post('/properties', isAuthenticated, propertyMakeController.createProperty);
 
@@ -80,8 +90,8 @@ module.exports = function(express) {
   router.post('/invite', isAuthenticated, inviteTenantController.invite);
     
   // need new payment medium. not using stripe anymore
-  // router.get('/payment', isAuthenticated, paymentController.show);
-  // router.post('/payment', isAuthenticated, paymentController.pay);
+  router.get('/payment', isAuthenticated, paymentController.show);
+  router.post('/payment', isAuthenticated, paymentController.pay);
 
   router.get('/logout', function(req, res) {
     req.logout();
