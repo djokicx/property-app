@@ -1,0 +1,29 @@
+{{#section 'head'}}
+    <link rel="stylesheet" href="/styles/auth.css">
+{{/section}}
+
+<div class="container">
+  <form method="POST" action="/request" class="form-signin">
+    <h2 class="form-signin-heading">Maintenance Help</h2>
+    
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
+    
+    <label for="inputMessageTitle" class="sr-only">Maintenance Issue Title </label>
+    <input type="text" id="inputMessageTitle" name="messageTitle" class="form-control" placeholder="Maintenance Issue" required autofocus>
+
+    <label for="inputMessage" class="sr-only">Message</label>
+    <textarea rows="4" cols="50" type="text" id="inputMessage" name="message" class="form-control" placeholder="Short description of your request..." required></textarea>
+
+    <div class="editable" data-placeholder="my placeholder">
+    <label for="inputMessageTitle" class="sr-only">Maintenance Issue Title </label>
+    <input type="text" style="width:30%"id="inputMessageAmount" name="messageAmount" class="form-control" value="$" required autofocus>
+</div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+
+  </form>
+</div>
