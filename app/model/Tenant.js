@@ -49,21 +49,21 @@ var attributes = {
   billingInfo: {
     type: Sequelize.TEXT,
   },
-  property: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
+  // property: {
+  //   type: Sequelize.INTEGER,
+  //   primaryKey: true,
 
-    references: {
-   // This is a reference to another model
-    model: Model.Property,
+  //   references: {
+  //  // This is a reference to another model
+  //   model: Model.Property,
 
-   // This is the column name of the referenced model
-    key: 'id',
+  //  // This is the column name of the referenced model
+  //   key: 'id',
 
-   // This declares when to check the foreign key constraint. PostgreSQL only.
-    deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
+  //  // This declares when to check the foreign key constraint. PostgreSQL only.
+  //   deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+  //   }
+  // },
   userType: {
     type: Sequelize.STRING
   }
