@@ -1,0 +1,60 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/paymentHistory">Patty</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="logout-link" href="/logout">Logout</a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search...">
+      </form>
+    </div>      
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/tenantDashboard">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="/request">Request Maintenance</a></li>
+        <li><a href="/payment">Pay Rent</a></li>
+        <li><a href="/paymentHistory">Payment History</a></li>
+
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Payment History</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Rent Due</th>
+              <th>Rent Paid\</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1/2017</th>
+              <th>$800</th>
+              <th>$800</th>
+            </tr>
+            <tr>
+              <th>2/2017</th>
+              <th>$800</th>
+              <th>$800</th>
+            </tr>
+            <tr>
+              <th>3/2017</th>
+              <th>$800</th>
+              <th>$800</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
