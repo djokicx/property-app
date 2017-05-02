@@ -58,14 +58,15 @@ module.exports.signup = function(req, res) {
 
   if (userType == "propertyManager") {
     Model.PropertyManager.create(user).then(function() {
-      res.redirect('/dashboard');
+      res.redirect('/');
     }).catch(function(error) {
       req.flash('error', "Please, choose a different username.");
       res.redirect('/');
     });
   } else if (userType == "tenant") {
+    console.log("adding tenant to tenants table");
     Model.Tenant.create(user).then(function() {
-      res.redirect('/tenantDashboard');
+      res.redirect('/');
     }).catch(function(error) {
       req.flash('error', "Please, choose a different username.");
       res.redirect('/');

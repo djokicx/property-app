@@ -8,6 +8,7 @@ module.exports = function(callback) {
     Model.PropertyManager.create({
       username: 'propertyManager',
       password: 'propertyManager',
+      userType: 'propertyManager'
     }).then(callback);
   });
 
@@ -17,7 +18,7 @@ module.exports = function(callback) {
     Model.Property.create({
       street: '2140 Fulton Street',
       city: 'San Francisco',
-      state: 'California',
+      state: 'California'
     }).then(callback);
   });
 
@@ -28,6 +29,7 @@ module.exports = function(callback) {
     Model.Tenant.create({
       username: 'tenant',
       password: 'tenant',
+      userType: 'tenant'
     }).then(callback);
   });
 };
