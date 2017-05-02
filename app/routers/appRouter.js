@@ -45,8 +45,11 @@ module.exports = function(express) {
       function(req, res) {
         if (req.user.userType == "propertyManager") {
           res.redirect('/dashboard');
+          // {successRedirect: '/dashboard',
+          // failureRedirect: '/',
+          // failureFlash: true}
         } else if (req.user.userType == "tenant") {
-          res.redirect('tenantDashboard');
+          res.redirect('/tenantDashboard');
         }
         req.flash('error', 'You have to be logged in to access the page.');
         res.redirect('/');
@@ -73,7 +76,7 @@ module.exports = function(express) {
 
   router.get('/paymentHistory', isAuthenticated, function(req, res) {
     console.log("rendering /paymentHistory");
-    res.render('/paymentHistory');
+    res.render('paymentHistory');
   });
 
   router.get('/request', isAuthenticated, function(req, res) {

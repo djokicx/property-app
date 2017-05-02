@@ -19,8 +19,6 @@ body {
           box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
-  border: 10px;
-  margin-bottom: 10px;
 }
 
 .form-signin .form-control:focus {
@@ -30,19 +28,4 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-
-.placeholder
-{
-    position: relative;
-}
-
-.placeholder::after
-{
-    position: absolute;
-    left: 5px;
-    top: 3px;
-    content: attr(data-placeholder);
-    pointer-events: none;
-    opacity: 0.6;
 }
