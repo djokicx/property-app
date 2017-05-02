@@ -1,5 +1,4 @@
-var Sequelize = require('sequelize'),
-    Model = require('../model/models.js');
+var Sequelize = require('sequelize');
 
 var attributes = {
   username: {
