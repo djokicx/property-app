@@ -10,7 +10,6 @@ module.exports = function(express) {
   var router = express.Router();
 
   var isAuthenticated = function (req, res, next) {
-    console.log("inside isAuthenticated");
     if (req.isAuthenticated()) {
       return next();
     }
@@ -45,10 +44,8 @@ module.exports = function(express) {
     passport.authenticate(['propertyManager', 'tenant']),
       function(req, res) {
         if (req.user.userType == "propertyManager") {
-          console.log("pm");
           res.redirect('/dashboard');
         } else if (req.user.userType == "tenant") {
-          console.log("tenant");
           res.redirect('tenantDashboard');
         }
         else {

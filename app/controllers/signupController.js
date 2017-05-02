@@ -41,6 +41,12 @@ module.exports.signup = function(req, res) {
     req.flash('error', "Please, enter the same password twice.");
     res.redirect('signup');
   }
+
+  console.log("usertype: " + userType);
+  if (userType == undefined) {
+    req.flash('error', "Please, select a user type.");
+    res.redirect('signup');
+  }
   
   var salt = bcrypt.genSaltSync(10);
   var hashedPassword = bcrypt.hashSync(password, salt); // actual hashing
@@ -64,7 +70,6 @@ module.exports.signup = function(req, res) {
       res.redirect('/');
     });
   } else if (userType == "tenant") {
-    console.log("adding tenant to tenants table");
     Model.Tenant.create(user).then(function() {
       res.redirect('/');
     }).catch(function(error) {
