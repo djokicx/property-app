@@ -82,45 +82,4 @@ module.exports = function(app) {
     });
   });
 
-
-
-  // // property manager serialize
-  // passport.serializeUser(function(propertyManager, done) {
-  //   done(null, propertyManager.id);
-  // });
-  // // property manager deserialize
-  // passport.deserializeUser(function(id, done) {
-  //   Model.PropertyManager.findOne({
-  //     where: {
-  //       'id': id
-  //     }
-  //   }).then(function (propertyManager) {
-  //     if (propertyManager === null) {
-  //       done(new Error('Wrong user id.'));
-  //     }
-      
-  //     done(null, propertyManager);
-  //   });
-  // });
-
-
-  // // tenant serialize
-  // passport.serializeUser(function(tenant, done) {
-  //   done(null, tenant.id);
-  // });
-  // // tenant deserialize
-  // passport.deserializeUser(function(id, done) {
-  //   Model.Tenant.findOne({
-  //     where: {
-  //       'id': id
-  //     }
-  //   }).then(function (tenant) {
-  //     if (tenant === null) {
-  //       done(new Error('Wrong user id.'));
-  //     }
-      
-  //     done(null, tenant);
-  //   });
-  // });
-
 };
