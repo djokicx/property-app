@@ -51,7 +51,6 @@ var attributes = {
   },
   property: {
     type: Sequelize.INTEGER,
-    primaryKey: true,
   },
   userType: {
     type: Sequelize.STRING
