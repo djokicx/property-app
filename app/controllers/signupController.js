@@ -43,7 +43,7 @@ module.exports.signup = function(req, res) {
   }
 
   console.log("usertype: " + userType);
-  if (userType == undefined) {
+  if (userType === undefined) {
     req.flash('error', "Please, select a user type.");
     res.redirect('signup');
   }

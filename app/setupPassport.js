@@ -63,8 +63,8 @@ module.exports = function(app) {
     var key = {
       id: user.id,
       type: user.userType
-    }
-    done(null, key)
+    };
+    done(null, key);
   });
   
   passport.deserializeUser(function(key, done) {

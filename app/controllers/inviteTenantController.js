@@ -1,6 +1,7 @@
 var Model = require('../model/models.js'),
     validator = require('validator'),
-    nodemailer = require('nodemailer');
+    nodemailer = require('nodemailer'),
+    handlebars = require('handlebars');
 
 module.exports.show = function(req, res) {
   res.render('invite');
@@ -29,8 +30,7 @@ module.exports.invite = function(req, res) {
       from: '"Patty" <patty@patty.com>', // sender address
       to: email, // list of receivers
       subject: 'Patty: Your Landlord Invited You.', // Subject line
-      text: 'Welcome to Patty, little one', // plain text body
-      html: '<b>You have been invited by your landlord to join Paddy. Please sign up with the following link:</b> <a href="https://pm-usf.herokuapp.com/signup">Join Here</a>' // add an appropriate link
+      html: '<p>Welcome to Patty, <br><br> You have been invited by your landlord ' + req.user.firstName + ' ' + req.user.lastName + ' to join Paddy. Please sign up with the following link <a href="https://pm-usf.herokuapp.com/signup/">Here</a></p>' // add an appropriate link
   };
 
   // send mail with defined transport object

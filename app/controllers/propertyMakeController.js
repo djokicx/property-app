@@ -74,17 +74,25 @@ module.exports.createProperty = function(req, res) {
 			bedrooms: bedrooms,
             bathrooms: bathrooms,
             parking: parking,
-            squareFootage: squareFootage
+            squareFootage: squareFootage,
+            // fullAdress: first.streetNumber + " " + first.street + ", " + first.city + ", " + first.state + ", " + first.postalCode,
 
-            // owner: Model.PropertyManager.username;  // figure this out.
         };
 
-        Model.Property.create(newAddress).then(function() {
+        Model.Property.create(newAddress).then(function(property) {
+            var temp = [];
+            if (req.user.properties !== null) {
+                temp = req.user.properties;
+            }
+            temp.push(property.id);
+			req.user.updateAttributes({properties: temp});
 			res.redirect('/dashboard');
 		}).catch(function(error) {
 			req.flash('error', "Please enter the information again.");
 			res.redirect('/properties');
 		});
+
+
 	});
 
 	// console.log("after address validation");

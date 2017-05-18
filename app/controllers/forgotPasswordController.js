@@ -14,6 +14,7 @@ module.exports.forgot = function(req, res, next) {
       });
     },
     function(token, done) {
+      console.log("Entered function");
       Model.PropertyManager.findOne({ where: { 'email': req.body.email }}).then(function(user) {
 
         if (!user) {
@@ -21,8 +22,23 @@ module.exports.forgot = function(req, res, next) {
           return res.redirect('/forgot');
         }
 
-        user.resetPasswordToken = token; // add to the model definition
-        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+        console.log('Found user: ' + user);
+        var timing = Date.now() + 3600000;
+        // console.log("PASSWORD TOKEN IS: " + token);
+        // console.log("User Reset Password TOken is: " + user.resetPasswordToken);
+
+        user.updateAttributes({
+          resetPasswordToken : token,
+          resetPasswordExpires : timing
+        });
+
+
+        // update attributes for tokens (in database)
+        /*  loc.updateAttributes({
+            locale: req.body.name
+        })
+        */
+
         // password reset link should be active for only 1 hour
 
         return done(null, token, user);

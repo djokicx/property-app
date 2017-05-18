@@ -9,9 +9,12 @@ module.exports.find = function(req, res) {
       req.flash('error', 'Password reset token is invalid or has expired.');
       return res.redirect('/forgot');
     }
-    res.render('reset', {
+
+    res.send('reset', {
       user: req.user
     });
+
+
   });
 };
 

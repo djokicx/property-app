@@ -40,7 +40,7 @@ var attributes = {
     type: Sequelize.INTEGER,
   },
   properties: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
   },
   billingInfo: {
     type: Sequelize.TEXT,
