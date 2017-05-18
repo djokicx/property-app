@@ -27,10 +27,10 @@ module.exports.invite = function(req, res) {
 
   // setup email data with unicode symbols
   var mailOptions = {
-      from: '"Patty" <patty@patty.com>', // sender address
+      from: '"Paddy" <paddy@paddy.com>', // sender address
       to: email, // list of receivers
-      subject: 'Patty: Your Landlord Invited You.', // Subject line
-      html: '<p>Welcome to Patty, <br><br> You have been invited by your landlord ' + req.user.firstName + ' ' + req.user.lastName + ' to join Paddy. Please sign up with the following link <a href="https://pm-usf.herokuapp.com/signup/">Here</a></p>' // add an appropriate link
+      subject: 'Paddy: Your Landlord Invited You.', // Subject line
+      html: '<p>Welcome to Paddy, <br><br> You have been invited by your landlord ' + req.user.firstName + ' ' + req.user.lastName + ' to join Paddy. Please sign up with the following link <a href="https://pm-usf.herokuapp.com/signup/">Here</a></p>' // add an appropriate link
   };
 
   // send mail with defined transport object
