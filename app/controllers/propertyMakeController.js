@@ -21,6 +21,7 @@ module.exports.createProperty = function(req, res) {
 	var squareFootage = req.body.squareFootage;
 	var rent = req.body.rent;
 	var mortgage = req.body.mortgage;
+	var tenantOccupancy = req.body.tenantOccupancy;
 
 	if (!validator.isNumeric(zipcode)) {
 		req.flash('error', "Please, enter a valid zipcode.");
@@ -79,8 +80,8 @@ module.exports.createProperty = function(req, res) {
             squareFootage: squareFootage,
             rent: rent,
             mortgage: mortgage,
-            fullAdress: first.streetNumber + " " + first.street + ", " + first.city + ", " + first.state + ", " + first.postalCode
-
+            fullAdress: first.streetNumber + " " + first.street + ", " + first.city + ", " + first.state + ", " + first.postalCode,
+            tenantOccupancy: tenantOccupancy
         };
 
         Model.Property.create(newAddress).then(function(property) {

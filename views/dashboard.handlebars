@@ -58,11 +58,10 @@
             
             {{#each properties}}
             <tr>
-              {{!-- {{#with dataValues}} --}}
               <th>{{street}}</th>
               <th>${{rent}}</th>
               <th>${{mortgage}}</th>
-              <th>${{tenantOccupancy}}</th>
+              <th>{{tenantOccupancy}}</th>
               <th><button class="btn btn btn-block btn-success submit" type="submit">Edit</button></th>
               </tr>
             {{/each}}
@@ -79,7 +78,6 @@
           </tbody>
 
         </table>
-{{!--                     <h4 class="sub-header"><a href="/properties">Add property</a></h4> --}}
       </div>
     </div>
   </div>
