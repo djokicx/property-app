@@ -39,12 +39,15 @@ var attributes = {
   country: {
     type: Sequelize.STRING,
   },
-  // fullAddress: {
-  //   type: Sequelize.STRING,
-  // },
-  // rent: {
-  //   type: Sequelize.INTEGER,
-  // },
+  fullAddress: {
+    type: Sequelize.STRING,
+  },
+  rent: {
+    type: Sequelize.INTEGER,
+  },
+  tenantOccupancy: {
+    type: Sequelize.STRING,
+  },
   latitude: {
     type: Sequelize.DOUBLE,
   },
@@ -63,9 +66,9 @@ var attributes = {
   squareFootage: {
     type: Sequelize.INTEGER,
   },
-  // mortgage: {
-  //   type: Sequelize.INTEGER,
-  // },
+  mortgage: {
+    type: Sequelize.INTEGER,
+  },
   purchasePrice: {
     type: Sequelize.INTEGER,
   },

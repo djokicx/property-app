@@ -19,6 +19,8 @@ module.exports.createProperty = function(req, res) {
 	var bathrooms = req.body.bathrooms;
 	var parking = req.body.parking;
 	var squareFootage = req.body.squareFootage;
+	var rent = req.body.rent;
+	var mortgage = req.body.mortgage;
 
 	if (!validator.isNumeric(zipcode)) {
 		req.flash('error', "Please, enter a valid zipcode.");
@@ -75,7 +77,9 @@ module.exports.createProperty = function(req, res) {
             bathrooms: bathrooms,
             parking: parking,
             squareFootage: squareFootage,
-            // fullAdress: first.streetNumber + " " + first.street + ", " + first.city + ", " + first.state + ", " + first.postalCode,
+            rent: rent,
+            mortgage: mortgage,
+            fullAdress: first.streetNumber + " " + first.street + ", " + first.city + ", " + first.state + ", " + first.postalCode
 
         };
 
